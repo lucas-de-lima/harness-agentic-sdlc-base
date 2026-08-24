@@ -115,7 +115,7 @@ Examples:
 - Orchestrator;
 - Discovery Agent;
 - Architect;
-- Go Engineer;
+- Engineer;
 - Test Engineer;
 - Reviewer;
 - Security Reviewer;

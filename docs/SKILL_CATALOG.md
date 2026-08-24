@@ -14,7 +14,11 @@
 - `adr-authoring`
 - `dependency-analysis`
 
-### Go Engineering
+### Engineering
+
+Engineering skills are language-specific. The Base Harness provides Go engineering skills built-in.
+Project-specific Engineering skills may be created for other technology stacks.
+
 - `idiomatic-go`
 - `go-project-structure`
 - `go-error-handling`

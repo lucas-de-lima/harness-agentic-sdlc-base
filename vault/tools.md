@@ -27,7 +27,7 @@ Capacidades externas disponíveis para agentes.
 | Git | branch, commit, diff, log | Controlled |
 | GitHub MCP | Issues, Projects, contexto | Read-only por padrão |
 | GitHub CLI (gh) | PR view, merge, project edit | Controlled |
-| Docker | Build, run, test | Go Engineer |
+| Docker | Build, run, test | Engineer |
 | harnessctl | Preflight, merge, HITL, branch-check, vault | Sempre disponível |
 
 ## Separação MCP vs gh CLI

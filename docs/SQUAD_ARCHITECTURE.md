@@ -17,8 +17,8 @@ Builds and updates understanding of requirements, domain, constraints, and legac
 ### Architecture Agent
 Evaluates architecture, patterns, major technical decisions, and ADRs.
 
-### Go Engineer
-Implements approved work in Go.
+### Engineer
+Implements approved work according to project technology stack.
 
 ### Test Engineer
 Designs and implements appropriate automated tests and validates test strategy.

@@ -29,7 +29,7 @@ Sequências orquestradas de atividades, decisões e handoffs.
 | WF-002 | Architecture Deliberation | architect | Profile → ADR |
 | WF-003 | Harness Generation | factory | Profile → Harness |
 | WF-004 | Implementation Planning | planner | Architecture → Backlog |
-| WF-005 | Implementation | go-engineer | Feature → Code + Tests |
+| WF-005 | Implementation | engineer | Feature → Code + Tests |
 | WF-006 | Code Review | reviewer | Code → Approval |
 | WF-007 | Release | release-reviewer | Develop → Release |
 

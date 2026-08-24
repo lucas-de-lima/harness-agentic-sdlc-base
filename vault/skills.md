@@ -25,9 +25,17 @@ Corpo de conhecimento e procedimento operacional para agentes.
 |---------|--------|
 | Discovery | project-discovery, requirements-extraction, domain-modeling, project-naming |
 | Architecture | architecture-evaluation, architecture-decision, adr-authoring, dependency-analysis |
-| Go Engineering | idiomatic-go, go-project-structure, go-testing, go-http, go-concurrency |
+| Engineering | implementation-standards, project-structure, testing, api-design, concurrency, configuration, observability, performance |
 | Infrastructure | docker-engineering, ci-engineering, database-integration |
 | Quality | code-review, test-review, security-review, documentation-review |
+
+## Language-specific skills
+
+Skill families may be specialized per technology stack. The Base Harness provides the
+following language-specific families for projects that use them:
+
+- **Go** — idiomatic-go, go-project-structure, go-testing, go-http, go-concurrency
+- Other language families are created as Project Skills in the Dedicated Harness.
 
 ## Ciclo de vida
 

@@ -31,7 +31,7 @@ Roles com responsabilidade por decisões e execução.
 | Discovery | Descoberta de projeto legado |
 | Architect | Decisão de arquitetura |
 | Planner | Breakdown de trabalho |
-| Go Engineer | Implementação |
+| Engineer | Implementação |
 
 ## Autoridade (AGENT_AUTHORITY_MATRIX)
 
@@ -40,7 +40,7 @@ Roles com responsabilidade por decisões e execução.
 | Orchestrator | Não | Não | **PROIBIDO** |
 | Discovery | Não | Não | **PROIBIDO** |
 | Architect | Design | Sim | **PROIBIDO** |
-| Go Engineer | Sim | Não | **PROIBIDO** |
+| Engineer | Sim | Não | **PROIBIDO** |
 | Reviewer | Não | Sim | **PROIBIDO** |
 
 Nenhum agent faz merge diretamente. Merge é sempre via [[tools|harnessctl merge]] com gate HITL.
