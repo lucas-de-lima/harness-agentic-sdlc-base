@@ -1,0 +1,57 @@
+id: WF-001
+name: github-discovery-e2e
+version: "1"
+
+trigger:
+  type: github_issue
+  issue_type: Spike
+  status: Ready
+  phase: Discovery
+
+preconditions:
+  - github_mcp_available
+  - correct_repository
+  - project_exists
+  - issue_exists
+  - project_spec_exists
+  - discovery_skill_available
+  - no_active_conflicting_execution
+
+reads:
+  - issue
+  - issue_type
+  - project_fields
+  - parent
+  - sub_issues
+  - repository_files
+
+agent:
+  name: discovery
+  skill: project-discovery
+
+writes:
+  - execution_comment
+  - project_status: "In Review"
+
+forbidden_writes:
+  - create_issue
+  - delete_issue
+  - close_issue
+  - edit_issue_body
+  - edit_issue_type
+  - mutate_hierarchy
+  - unrelated_project_field_change
+  - production_code_change
+
+outputs:
+  - project-profile
+  - handoff-packet
+  - execution-evidence
+
+terminal:
+  success: In Review
+  blocked: Blocked
+  failure: Blocked
+
+retry:
+  max_attempts: 2

@@ -1,0 +1,56 @@
+{
+  "type": "object",
+  "required": [
+    "type",
+    "title",
+    "objective",
+    "acceptance_criteria",
+    "status"
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "Epic",
+        "Feature",
+        "User Story",
+        "Task",
+        "Spike"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "objective": {
+      "type": "string"
+    },
+    "acceptance_criteria": {
+      "type": "array"
+    },
+    "dependencies": {
+      "type": "array"
+    },
+    "non_goals": {
+      "type": "array"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Backlog",
+        "Ready"
+      ]
+    },
+    "priority": {
+      "type": "string"
+    },
+    "effort": {
+      "type": "string"
+    },
+    "phase": {
+      "type": "string"
+    },
+    "risk": {
+      "type": "string"
+    }
+  }
+}

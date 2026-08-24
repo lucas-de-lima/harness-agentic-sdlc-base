@@ -1,0 +1,39 @@
+{
+  "type": "object",
+  "required": [
+    "execution_id",
+    "epic",
+    "features",
+    "user_stories",
+    "tasks",
+    "first_ready_task",
+    "validation",
+    "next_workflow"
+  ],
+  "properties": {
+    "execution_id": {
+      "type": "string"
+    },
+    "epic": {
+      "type": "string"
+    },
+    "features": {
+      "type": "array"
+    },
+    "user_stories": {
+      "type": "array"
+    },
+    "tasks": {
+      "type": "array"
+    },
+    "first_ready_task": {
+      "type": "string"
+    },
+    "validation": {
+      "type": "object"
+    },
+    "next_workflow": {
+      "type": "string"
+    }
+  }
+}

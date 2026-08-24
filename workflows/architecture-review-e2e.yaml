@@ -1,0 +1,48 @@
+id: WF-003
+name: architecture-review-e2e
+version: "1"
+
+trigger:
+  type: workflow_terminal
+  source_workflow: WF-002
+  required_state: Architecture Ready
+
+preconditions:
+  - architecture_decision_valid
+  - adr_present
+  - project_profile_present
+  - review_skill_available
+  - no_conflicting_review_execution
+
+agent:
+  name: reviewer
+  skill: architecture-review
+
+outputs:
+  - review-report
+  - review-handoff
+
+writes:
+  - bounded_execution_evidence
+  - workflow_state_transition
+
+forbidden_writes:
+  - production_code
+  - architecture_rewrite
+  - dependency_changes
+  - deployment_changes
+  - unrelated_github_resources
+
+outcomes:
+  approved:
+    state: Architecture Approved
+    next_workflow: implementation-planning
+  changes_requested:
+    state: In Progress
+    next_workflow: architecture-deliberation
+  blocked:
+    state: Blocked
+    next_workflow: human-intervention
+
+retry:
+  max_attempts: 1

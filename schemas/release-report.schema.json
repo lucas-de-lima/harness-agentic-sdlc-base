@@ -1,0 +1,41 @@
+{
+  "type": "object",
+  "required": [
+    "project",
+    "release_identifier",
+    "commit",
+    "generated_at",
+    "functional_gates",
+    "build_gates",
+    "quality_gates",
+    "security_gates",
+    "runtime_gates",
+    "documentation_gates",
+    "ci_gates",
+    "waivers",
+    "final_decision",
+    "residual_risks",
+    "next_action"
+  ],
+  "properties": {
+    "project": {
+      "type": "string"
+    },
+    "release_identifier": {
+      "type": "string"
+    },
+    "commit": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "final_decision": {
+      "type": "string",
+      "enum": [
+        "Release Ready",
+        "Release Blocked"
+      ]
+    }
+  }
+}

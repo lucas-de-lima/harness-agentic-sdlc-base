@@ -1,0 +1,46 @@
+id: WF-002
+name: architecture-deliberation
+version: "1"
+
+trigger:
+  type: discovery_complete
+
+preconditions:
+  - project_profile_valid
+  - discovery_handoff_present
+  - architecture_catalog_available
+  - architecture_framework_available
+  - no_conflicting_architecture_execution
+
+reads:
+  - project_profile
+  - architecture_catalog
+  - architecture_decision_framework
+  - relevant_durable_context
+
+agent:
+  name: architect
+  skill: architecture-deliberation
+
+writes:
+  - architecture-decision
+  - adr-ready-artifact
+  - execution-evidence
+
+forbidden_writes:
+  - production_code
+  - dependencies
+  - deployment_infrastructure
+  - unrelated_github_resources
+
+outputs:
+  - architecture-decision
+  - adr
+
+terminal:
+  success: Architecture Ready
+  blocked: Architecture Blocked
+  failure: Architecture Blocked
+
+retry:
+  max_attempts: 2

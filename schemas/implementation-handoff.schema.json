@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "required": [
+    "work_item_id",
+    "workflow_id",
+    "execution_id",
+    "agent",
+    "objective",
+    "completed_actions",
+    "modified_artifacts",
+    "tests_run",
+    "validation_results",
+    "acceptance_criteria_results",
+    "architecture_impact",
+    "unresolved_issues",
+    "risks",
+    "recommended_next_action"
+  ]
+}

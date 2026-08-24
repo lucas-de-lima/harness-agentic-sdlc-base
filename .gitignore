@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/*.code-workspace
+.idea/
+
+# Harness runtime artifacts (generated in project repos, not here)
+.harness/
+
+# Legacy product project specs (not Base Harness components)
+projects/
+
+# Distribution snapshots (superseded by Git versioning)
+fases-01-31/
+
+# Environment
+.env
+.env.local

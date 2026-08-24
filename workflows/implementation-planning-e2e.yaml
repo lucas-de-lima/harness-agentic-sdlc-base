@@ -1,0 +1,53 @@
+id: WF-004
+name: implementation-planning-e2e
+version: "1"
+
+trigger:
+  type: workflow_terminal
+  source_workflow: WF-003
+  required_state: Architecture Approved
+
+preconditions:
+  - project_profile_valid
+  - architecture_approved
+  - review_approved
+  - github_project_available
+  - planning_skill_available
+  - no_conflicting_planning_execution
+
+agent:
+  name: planner
+  skill: implementation-planning
+
+writes:
+  - create_epic
+  - create_feature
+  - create_user_story
+  - create_task
+  - set_project_fields
+  - create_planning_comment
+  - bounded_status_transition
+
+allowed_status_transition:
+  Backlog_to_Ready: true
+  Ready_to_In_Progress: false
+
+forbidden_writes:
+  - production_code
+  - architecture_changes
+  - dependency_changes
+  - implementation_claim
+  - unrelated_github_resources
+
+outputs:
+  - planning_hierarchy
+  - first_ready_task
+  - planning_evidence
+
+terminal:
+  success: Planning Ready
+  blocked: Planning Blocked
+  failure: Planning Blocked
+
+retry:
+  max_attempts: 2

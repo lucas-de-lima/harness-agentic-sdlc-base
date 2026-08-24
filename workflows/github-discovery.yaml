@@ -1,0 +1,36 @@
+id: WF-001
+name: github-project-discovery
+version: "1"
+trigger:
+  type: github_issue
+  required_status: Ready
+
+preconditions:
+  - github_identity_preflight
+  - project_root_resolved
+
+reads:
+  - issue
+  - issue_type
+  - parent
+  - sub_issues
+  - project_fields
+
+agent:
+  name: discovery
+  skill: project-discovery
+
+writes:
+  - execution_comment
+  - controlled_status_transition
+
+forbidden_writes:
+  - issue_delete
+  - repository_delete
+  - project_delete
+  - repository_code_mutation
+
+terminal:
+  success: In Review
+  blocked: Blocked
+  failure: Blocked

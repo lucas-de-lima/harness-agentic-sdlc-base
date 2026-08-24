@@ -1,0 +1,31 @@
+# Merge this block into your existing ~/.codex/config.toml.
+# Do not replace the whole file if it already contains Codex settings.
+#
+# This is a READ-ONLY configuration for execution agents.
+# It excludes the "pull_requests" toolset to prevent agents from calling
+# github_merge_pull_request directly. The only authorized merge path is
+# `harnessctl merge`, which uses a separate (non-Codex) GitHub CLI call
+# with HITL gate enforcement.
+
+[mcp_servers.github]
+command = "docker"
+args = [
+  "run",
+  "-i",
+  "--rm",
+  "-p",
+  "127.0.0.1:8085:8085",
+  "-e",
+  "GITHUB_OAUTH_CALLBACK_PORT=8085",
+  "-e",
+  "GITHUB_READ_ONLY=1",
+  "-e",
+  "GITHUB_TOOLSETS=context,issues,projects,users",
+  "ghcr.io/github/github-mcp-server"
+]
+startup_timeout_sec = 30
+tool_timeout_sec = 60
+
+# WARNING: Do NOT add "pull_requests" to GITHUB_TOOLSETS for any execution agent.
+# The pull_requests toolset includes github_merge_pull_request, which allows
+# agents to bypass HITL gate enforcement. Use `harnessctl merge` instead.

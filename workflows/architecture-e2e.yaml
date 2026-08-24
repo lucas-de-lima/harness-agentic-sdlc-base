@@ -1,0 +1,42 @@
+id: WF-002
+name: architecture-e2e
+version: "1"
+
+trigger:
+  type: github_issue
+  required_status: In Review
+  required_phase: Discovery
+
+preconditions:
+  - project_profile_valid
+  - discovery_handoff_present
+  - architecture_skill_available
+  - architecture_catalog_available
+  - no_conflicting_architecture_execution
+
+agent:
+  name: architect
+  skill: architecture-deliberation
+
+outputs:
+  - architecture-decision
+  - adr
+  - architecture-handoff
+
+writes:
+  - bounded_execution_evidence
+  - architecture_artifacts
+
+forbidden_writes:
+  - production_code
+  - dependency_changes
+  - deployment_changes
+  - unrelated_github_resources
+
+terminal:
+  success: Architecture Ready
+  blocked: Architecture Blocked
+  failure: Architecture Blocked
+
+retry:
+  max_attempts: 2

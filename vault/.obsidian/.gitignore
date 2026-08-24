@@ -1,0 +1,11 @@
+# Personal workspace state — never versioned
+workspace
+workspace.json
+workspace-mobile
+workspace-mobile.json
+
+# Cache
+cache/
+
+# Local plugin data (only community plugin binaries, not the config)
+plugins/

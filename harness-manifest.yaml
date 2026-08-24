@@ -1,0 +1,26 @@
+name: agentic-sdlc-base
+version: 0.31.0
+schema_version: "1"
+status: pilot-ready
+
+layers:
+  - governance
+  - skills
+  - agents
+  - workflows
+  - tools
+  - factory
+  - validation
+  - vault
+
+runtime_adapters:
+  - codex
+
+supported_workflows:
+  - WF-001
+  - WF-002
+  - WF-003
+  - WF-004
+  - WF-005
+  - WF-006
+  - WF-007

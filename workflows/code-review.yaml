@@ -1,0 +1,56 @@
+id: WF-006
+name: code-review
+version: "1"
+
+trigger:
+  type: github_issue
+  required_type: Task
+  required_status: In Review
+
+preconditions:
+  - implementation_handoff_present
+  - acceptance_criteria_present
+  - architecture_approved
+  - code_changes_present
+  - code_review_skill_available
+  - no_conflicting_review_execution
+  - github_identity_preflight
+  - project_root_resolved
+
+agent:
+  name: reviewer
+  skill: code-review
+
+permissions:
+  implementation_files: read
+  tests: read
+  git: read
+  github_issue: controlled_write
+
+outputs:
+  - review_report
+  - review_handoff
+  - review_evidence
+
+outcomes:
+  approved:
+    from: In Review
+    to: Done
+  changes_requested:
+    from: In Review
+    to: In Progress
+  blocked:
+    from: In Review
+    to: Blocked
+
+forbidden_writes:
+  - source_code
+  - tests
+  - architecture
+  - dependency_changes
+  - merge
+  - release
+  - unrelated_github_resources
+
+retry:
+  max_attempts: 1

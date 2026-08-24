@@ -1,0 +1,43 @@
+{
+  "type": "object",
+  "required": [
+    "schema_version",
+    "identity",
+    "domain",
+    "technical",
+    "constraints",
+    "non_goals",
+    "risks",
+    "open_questions",
+    "evidence"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "identity": {
+      "type": "object"
+    },
+    "domain": {
+      "type": "object"
+    },
+    "technical": {
+      "type": "object"
+    },
+    "constraints": {
+      "type": "array"
+    },
+    "non_goals": {
+      "type": "array"
+    },
+    "risks": {
+      "type": "array"
+    },
+    "open_questions": {
+      "type": "array"
+    },
+    "evidence": {
+      "type": "array"
+    }
+  }
+}

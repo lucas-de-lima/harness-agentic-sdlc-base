@@ -1,0 +1,46 @@
+{
+  "schema_version": "1",
+  "identity": {
+    "proposed_product_name": "Example Library API",
+    "proposed_repository_name": "example-library-api",
+    "short_description": "Backend API for managing books and reading status.",
+    "problem_statement": "Allow API clients to maintain a small library catalog and reading state."
+  },
+  "domain": {
+    "actors": [
+      "API consumer"
+    ],
+    "core_concepts": [
+      "book",
+      "author",
+      "reading status"
+    ],
+    "entities": [
+      "Book",
+      "Author"
+    ],
+    "business_rules": [
+      "A book has a title.",
+      "A book may have an author.",
+      "Reading status can be unread, reading, or completed."
+    ]
+  },
+  "technical": {
+    "application_type": "HTTP API",
+    "persistence": "PostgreSQL",
+    "interfaces": [
+      "HTTP"
+    ],
+    "external_dependencies": [],
+    "concurrency": "ordinary request concurrency"
+  },
+  "constraints": [
+    "small backend system",
+    "no frontend",
+    "low operational complexity preferred"
+  ],
+  "risks": [
+    "legacy behavior may include undocumented edge cases"
+  ],
+  "open_questions": []
+}

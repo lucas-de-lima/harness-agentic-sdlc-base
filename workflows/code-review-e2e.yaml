@@ -1,0 +1,61 @@
+id: WF-006
+name: code-review-e2e
+version: "1"
+
+trigger:
+  type: github_issue
+  required_type: Task
+  required_status: In Review
+  required_phase: Implementation
+
+preconditions:
+  - implementation_handoff_present
+  - architecture_approved
+  - review_skill_available
+  - code_changes_present
+  - no_conflicting_review_execution
+
+agent:
+  name: reviewer
+  skill: code-review
+
+reads:
+  - task
+  - acceptance_criteria
+  - implementation_handoff
+  - git_diff
+  - changed_files
+  - tests
+  - architecture
+  - ADRs
+
+writes:
+  - review_report
+  - review_handoff
+  - bounded_execution_comment
+  - controlled_status_transition
+
+outcomes:
+  approved:
+    state: Done
+  changes_requested:
+    state: In Progress
+  blocked:
+    state: Blocked
+
+forbidden_writes:
+  - source_code
+  - tests
+  - architecture
+  - dependencies
+  - merge
+  - release
+  - unrelated_github_resources
+
+terminal:
+  success: Done
+  changes_requested: In Progress
+  blocked: Blocked
+
+retry:
+  max_attempts: 1

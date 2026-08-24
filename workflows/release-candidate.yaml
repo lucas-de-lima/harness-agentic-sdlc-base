@@ -1,0 +1,43 @@
+id: WF-007
+name: release-candidate
+version: "1"
+
+trigger:
+  type: epic_or_project
+  required_state: Release Candidate
+
+preconditions:
+  - required_work_items_done
+  - release_scope_frozen
+  - release_workflow_available
+  - github_identity_preflight
+  - project_root_resolved
+
+checks:
+  - functional
+  - build
+  - go_quality
+  - security
+  - runtime
+  - documentation
+  - ci
+
+agent:
+  name: release-reviewer
+  skill: release-readiness
+
+outputs:
+  - release_report
+  - residual_risks
+  - decision
+
+outcomes:
+  ready:
+    state: Release Ready
+  blocked:
+    state: Release Blocked
+
+forbidden_writes:
+  - production_deployment
+  - unrelated_github_resources
+  - source_code_changes_without_an_explicit_task

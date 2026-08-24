@@ -1,0 +1,13 @@
+{
+  "alwaysUpdateLinks": true,
+  "attachmentFolderPath": "./",
+  "defaultViewMode": "source",
+  "livePreview": false,
+  "showFrontmatter": true,
+  "showLineNumber": false,
+  "spellcheck": false,
+  "tabSize": 2,
+  "useTab": false,
+  "newFileLocation": "current",
+  "promptDelete": false
+}

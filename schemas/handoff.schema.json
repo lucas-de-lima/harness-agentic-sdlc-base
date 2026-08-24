@@ -1,0 +1,55 @@
+{
+  "type": "object",
+  "required": [
+    "work_item_id",
+    "workflow_id",
+    "agent",
+    "status",
+    "objective",
+    "completed_actions",
+    "modified_artifacts",
+    "validation",
+    "unresolved_issues",
+    "risks",
+    "recommended_next_action",
+    "evidence"
+  ],
+  "properties": {
+    "work_item_id": {
+      "type": "string"
+    },
+    "workflow_id": {
+      "type": "string"
+    },
+    "agent": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "objective": {
+      "type": "string"
+    },
+    "completed_actions": {
+      "type": "array"
+    },
+    "modified_artifacts": {
+      "type": "array"
+    },
+    "validation": {
+      "type": "object"
+    },
+    "unresolved_issues": {
+      "type": "array"
+    },
+    "risks": {
+      "type": "array"
+    },
+    "recommended_next_action": {
+      "type": "string"
+    },
+    "evidence": {
+      "type": "array"
+    }
+  }
+}

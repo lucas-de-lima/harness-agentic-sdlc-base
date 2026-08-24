@@ -1,0 +1,58 @@
+{
+  "type": "object",
+  "required": [
+    "schema_version",
+    "identity",
+    "domain",
+    "technical",
+    "constraints",
+    "risks",
+    "open_questions"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "identity": {
+      "type": "object"
+    },
+    "domain": {
+      "type": "object"
+    },
+    "technical": {
+      "type": "object"
+    },
+    "constraints": {
+      "type": "array"
+    },
+    "risks": {
+      "type": "array"
+    },
+    "open_questions": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "question": { "type": "string" },
+              "type": {
+                "type": "string",
+                "enum": ["product", "engineering", "deferrable", "blocker"]
+              },
+              "impact": {
+                "type": "string",
+                "enum": ["low", "medium", "high"]
+              },
+              "resolved": { "type": "boolean" }
+            },
+            "required": ["question", "type"]
+          }
+        ]
+      }
+    }
+  }
+}

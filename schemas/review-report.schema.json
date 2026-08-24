@@ -1,0 +1,16 @@
+{
+  "type": "object",
+  "required": [
+    "work_item_id",
+    "workflow_id",
+    "execution_id",
+    "reviewer",
+    "artifact",
+    "decision",
+    "summary",
+    "findings",
+    "gates",
+    "residual_risks",
+    "next_action"
+  ]
+}

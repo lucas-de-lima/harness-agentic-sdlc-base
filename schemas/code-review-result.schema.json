@@ -1,0 +1,44 @@
+{
+  "type": "object",
+  "required": [
+    "execution_id",
+    "work_item_id",
+    "reviewer",
+    "decision",
+    "summary",
+    "findings",
+    "gates",
+    "next_action"
+  ],
+  "properties": {
+    "execution_id": {
+      "type": "string"
+    },
+    "work_item_id": {
+      "type": "string"
+    },
+    "reviewer": {
+      "type": "string"
+    },
+    "decision": {
+      "type": "string",
+      "enum": [
+        "Approved",
+        "Changes Requested",
+        "Blocked"
+      ]
+    },
+    "summary": {
+      "type": "string"
+    },
+    "findings": {
+      "type": "array"
+    },
+    "gates": {
+      "type": "array"
+    },
+    "next_action": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "type": "object",
+  "required": [
+    "execution_id",
+    "work_item_id",
+    "agent",
+    "status",
+    "modified_files",
+    "tests",
+    "validation",
+    "handoff",
+    "next_action"
+  ],
+  "properties": {
+    "execution_id": {
+      "type": "string"
+    },
+    "work_item_id": {
+      "type": "string"
+    },
+    "agent": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "modified_files": {
+      "type": "array"
+    },
+    "tests": {
+      "type": "array"
+    },
+    "validation": {
+      "type": "object"
+    },
+    "handoff": {
+      "type": "string"
+    },
+    "next_action": {
+      "type": "string"
+    }
+  }
+}

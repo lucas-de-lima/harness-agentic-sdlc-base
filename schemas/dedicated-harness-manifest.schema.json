@@ -1,0 +1,43 @@
+{
+  "type": "object",
+  "required": [
+    "schema_version",
+    "harness_version",
+    "base_harness_version",
+    "project_repository",
+    "architecture_profile",
+    "selected_agents",
+    "selected_skills",
+    "selected_tools",
+    "enabled_workflows"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "harness_version": {
+      "type": "string"
+    },
+    "base_harness_version": {
+      "type": "string"
+    },
+    "project_repository": {
+      "type": "string"
+    },
+    "architecture_profile": {
+      "type": "string"
+    },
+    "selected_agents": {
+      "type": "array"
+    },
+    "selected_skills": {
+      "type": "array"
+    },
+    "selected_tools": {
+      "type": "array"
+    },
+    "enabled_workflows": {
+      "type": "array"
+    }
+  }
+}

@@ -1,0 +1,58 @@
+id: WF-005
+name: go-engineer-e2e
+version: "1"
+
+trigger:
+  type: github_issue
+  required_type: Task
+  required_status: Ready
+  required_phase: Implementation
+
+preconditions:
+  - architecture_approved
+  - planning_ready
+  - dependencies_resolved
+  - correct_repository
+  - go_engineer_skill_available
+  - no_conflicting_implementation_execution
+
+agent:
+  name: go-engineer
+  skill: go-engineer
+
+state_transition:
+  claim:
+    from: Ready
+    to: In Progress
+  success:
+    from: In Progress
+    to: In Review
+
+outputs:
+  - code_changes
+  - tests
+  - validation_evidence
+  - implementation_handoff
+
+allowed_writes:
+  - production_code_in_task_scope
+  - tests_in_task_scope
+  - project_local_configuration_in_task_scope
+  - execution_comment
+  - status_transition
+
+forbidden_writes:
+  - architecture_change
+  - task_done
+  - merge
+  - release
+  - unrelated_github_resources
+  - destructive_repository_actions
+
+terminal:
+  success: In Review
+  blocked: Blocked
+  failure: In Progress
+
+retry:
+  max_attempts: 2

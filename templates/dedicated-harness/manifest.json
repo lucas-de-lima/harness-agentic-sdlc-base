@@ -1,0 +1,11 @@
+{
+  "schema_version": "1",
+  "harness_version": "0.1.0",
+  "base_harness_version": "{{BASE_VERSION}}",
+  "project_repository": "{{REPOSITORY}}",
+  "architecture_profile": "{{ARCHITECTURE}}",
+  "selected_agents": [],
+  "selected_skills": [],
+  "selected_tools": [],
+  "enabled_workflows": []
+}

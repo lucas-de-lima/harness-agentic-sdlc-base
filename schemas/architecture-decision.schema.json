@@ -1,0 +1,47 @@
+{
+  "type": "object",
+  "required": [
+    "selected_architecture",
+    "confidence",
+    "context",
+    "candidates",
+    "simplicity_baseline",
+    "rationale",
+    "rejected_alternatives",
+    "consequences",
+    "future_pressure",
+    "unresolved_questions"
+  ],
+  "properties": {
+    "selected_architecture": {
+      "type": "string"
+    },
+    "confidence": {
+      "type": "string"
+    },
+    "context": {
+      "type": "object"
+    },
+    "candidates": {
+      "type": "array"
+    },
+    "simplicity_baseline": {
+      "type": "string"
+    },
+    "rationale": {
+      "type": "array"
+    },
+    "rejected_alternatives": {
+      "type": "array"
+    },
+    "consequences": {
+      "type": "object"
+    },
+    "future_pressure": {
+      "type": "array"
+    },
+    "unresolved_questions": {
+      "type": "array"
+    }
+  }
+}

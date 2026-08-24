@@ -1,0 +1,22 @@
+id: WF-001
+name: project-discovery
+version: "1"
+trigger:
+  type: work_item
+  status: Ready
+preconditions:
+  - repository_root_resolved
+  - specification_available
+  - discovery_skill_available
+  - output_directory_writable
+execution:
+  agent: discovery
+  skill: project-discovery
+  max_attempts: 2
+outputs:
+  - project-profile.md
+  - handoff.yaml
+terminal:
+  success: Discovery Complete
+  blocked: Discovery Blocked
+  failure: Discovery Failed

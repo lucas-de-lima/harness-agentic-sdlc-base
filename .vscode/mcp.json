@@ -1,0 +1,46 @@
+{
+	"$schema": "https://raw.githubusercontent.com/Kilo-Org/kilocode/main/schemas/mcp.json",
+	"description": "Default MCP config for EDITORIAL HUB execution agents. The pull_requests toolset is EXCLUDED because merge tools (github_merge_pull_request) must never be available to agents. Use a separate MCP profile with the merge-only config for `harnessctl merge`.",
+	"servers": {
+		"github-read": {
+			"type": "stdio",
+			"command": "docker",
+			"args": [
+				"run",
+				"-i",
+				"--rm",
+				"-e",
+				"GITHUB_PERSONAL_ACCESS_TOKEN=${input:token}",
+				"-e",
+				"GITHUB_READ_ONLY=1",
+				"-e",
+				"GITHUB_TOOLSETS=context,issues,projects,users",
+				"ghcr.io/github/github-mcp-server:latest"
+			],
+			"version": "latest"
+		},
+		"github-write": {
+			"type": "stdio",
+			"command": "docker",
+			"args": [
+				"run",
+				"-i",
+				"--rm",
+				"-e",
+				"GITHUB_PERSONAL_ACCESS_TOKEN=${input:token}",
+				"-e",
+				"GITHUB_TOOLSETS=issues,projects,git",
+				"ghcr.io/github/github-mcp-server:latest"
+			],
+			"version": "latest"
+		}
+	},
+	"inputs": [
+		{
+			"id": "token",
+			"type": "promptString",
+			"description": "GitHub Personal Access Token (with repo scope for write, metadata only for read)",
+			"password": true
+		}
+	]
+}

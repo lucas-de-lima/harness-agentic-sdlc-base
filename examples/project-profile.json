@@ -1,0 +1,40 @@
+{
+  "schema_version": "1",
+  "identity": {
+    "proposed_product_name": "Example Ledger API",
+    "proposed_repository_name": "example-ledger-api",
+    "short_description": "Small backend API for tracking ledger entries.",
+    "problem_statement": "Provide a simple service to create and query ledger entries.",
+    "selected_architecture": "simple"
+  },
+  "domain": {
+    "actors": [
+      "API consumer"
+    ],
+    "core_concepts": [
+      "ledger entry"
+    ],
+    "entities": [
+      "LedgerEntry"
+    ],
+    "business_rules": [
+      "Entries must have a value and timestamp."
+    ]
+  },
+  "technical": {
+    "application_type": "HTTP API",
+    "persistence": "PostgreSQL",
+    "interfaces": [
+      "HTTP"
+    ],
+    "external_dependencies": []
+  },
+  "constraints": [
+    "Keep the system small and easy to operate.",
+    "Use idiomatic Go."
+  ],
+  "risks": [
+    "Legacy behavior may contain undocumented edge cases."
+  ],
+  "open_questions": []
+}

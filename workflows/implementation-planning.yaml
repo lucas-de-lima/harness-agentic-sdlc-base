@@ -1,0 +1,48 @@
+id: WF-004
+name: implementation-planning
+version: "1"
+
+trigger:
+  type: architecture_approved
+
+preconditions:
+  - project_profile_valid
+  - architecture_decision_approved
+  - architecture_review_approved
+  - planning_skill_available
+  - github_project_available
+  - project_root_resolved
+  - github_identity_preflight
+  - dedicated_harness_available
+
+agent:
+  name: planner
+  skill: implementation-planning
+
+outputs:
+  - epic
+  - features
+  - user_stories
+  - tasks
+  - dependencies
+  - acceptance_criteria
+  - planning_handoff
+
+writes:
+  - github_work_items
+  - bounded_execution_evidence
+  - planning_artifacts
+
+forbidden_writes:
+  - production_code
+  - architecture_change
+  - dependency_installation
+  - unrelated_github_resources
+
+terminal:
+  success: Planning Ready
+  blocked: Planning Blocked
+  failure: Planning Blocked
+
+retry:
+  max_attempts: 2

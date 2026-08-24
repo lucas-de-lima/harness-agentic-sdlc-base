@@ -1,0 +1,36 @@
+{
+  "type": "object",
+  "required": [
+    "execution_id",
+    "work_item_id",
+    "reviewer",
+    "decision",
+    "review_report",
+    "next_workflow"
+  ],
+  "properties": {
+    "execution_id": {
+      "type": "string"
+    },
+    "work_item_id": {
+      "type": "string"
+    },
+    "reviewer": {
+      "type": "string"
+    },
+    "decision": {
+      "type": "string",
+      "enum": [
+        "Approved",
+        "Changes Requested",
+        "Blocked"
+      ]
+    },
+    "review_report": {
+      "type": "string"
+    },
+    "next_workflow": {
+      "type": "string"
+    }
+  }
+}

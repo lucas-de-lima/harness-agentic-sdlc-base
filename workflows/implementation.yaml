@@ -1,0 +1,59 @@
+id: WF-005
+name: implementation
+version: "1"
+
+trigger:
+  type: github_issue
+  required_type: Task
+  required_status: Ready
+
+preconditions:
+  - architecture_approved
+  - planning_ready
+  - task_acceptance_criteria_present
+  - task_dependencies_resolved
+  - go_engineer_skill_available
+  - correct_repository
+  - no_conflicting_implementation_execution
+  - github_identity_preflight
+  - project_root_resolved
+  - dedicated_harness_available
+
+agent:
+  name: go-engineer
+  skill: go-engineer
+
+state_transition:
+  before: Ready
+  claim: In Progress
+  terminal:
+    success: In Review
+    blocked: Blocked
+    failure: In Progress
+
+writes:
+  - production_code_in_scope
+  - tests_in_scope
+  - project_local_configuration_in_scope
+  - implementation_handoff
+  - bounded_github_execution_evidence
+
+forbidden_writes:
+  - architecture_change
+  - unrelated_github_resources
+  - task_done
+  - merge
+  - release
+  - destructive_repository_actions
+
+validation:
+  - scope
+  - acceptance_criteria
+  - tests
+  - go_quality
+  - diff
+  - architecture
+  - handoff
+
+retry:
+  max_attempts: 2

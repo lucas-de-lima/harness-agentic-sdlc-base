@@ -1,0 +1,45 @@
+{
+  "type": "object",
+  "required": [
+    "execution_id",
+    "work_item_id",
+    "reviewer",
+    "decision",
+    "review_report",
+    "review_handoff",
+    "final_state"
+  ],
+  "properties": {
+    "execution_id": {
+      "type": "string"
+    },
+    "work_item_id": {
+      "type": "string"
+    },
+    "reviewer": {
+      "type": "string"
+    },
+    "decision": {
+      "type": "string",
+      "enum": [
+        "Approved",
+        "Changes Requested",
+        "Blocked"
+      ]
+    },
+    "review_report": {
+      "type": "string"
+    },
+    "review_handoff": {
+      "type": "string"
+    },
+    "final_state": {
+      "type": "string",
+      "enum": [
+        "Done",
+        "In Progress",
+        "Blocked"
+      ]
+    }
+  }
+}
