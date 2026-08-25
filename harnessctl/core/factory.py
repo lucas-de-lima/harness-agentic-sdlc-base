@@ -54,6 +54,35 @@ def _load_profile(path: Path) -> dict[str, Any]:
     return data
 
 
+def _generate_agents_md(name: str, repo: str) -> str:
+    return f"""# {name}
+
+This repository contains a **Dedicated Harness** — an Agentic SDLC layer
+that governs how work is planned, implemented, reviewed, and released.
+
+## Entry points
+
+- [.harness/README.md](.harness/README.md) — harness overview and operation
+- [.harness/manifest.json](.harness/manifest.json) — selected agents, skills, workflows
+- [.harness/vault/_index.md](.harness/vault/_index.md) — durable project knowledge
+
+## Operating principles
+
+1. Follow the policies and workflows defined in `.harness/`.
+2. The Dedicated Harness is **self-sufficient** after commit. It has no
+   runtime dependency on the Base Harness or any other repository.
+3. Do not explore sibling projects in the workspace without an explicit
+   need.
+4. All changes must pass the applicable quality gates and HITL gates
+   defined in `.harness/policies/`.
+
+## Provenance
+
+- **Repository:** {repo}
+- **Harness version:** self-contained in `.harness/manifest.json`
+"""
+
+
 def generate_harness(
     profile_path: Path,
     base_version: str,
@@ -128,6 +157,11 @@ automatically overwrite it.
 - `workflows/` — enabled workflows
 - `tools/` — project tool configuration
 """,
+        encoding="utf-8",
+    )
+
+    (out / "AGENTS.md").write_text(
+        _generate_agents_md(name, repo),
         encoding="utf-8",
     )
 

@@ -72,6 +72,7 @@ def validate_base(root: Path) -> dict:
 
 def validate_dedicated(root: Path) -> dict:
     required = [
+        "AGENTS.md",
         ".harness/README.md",
         ".harness/project-profile.md",
         ".harness/architecture.md",
@@ -80,6 +81,17 @@ def validate_dedicated(root: Path) -> dict:
     missing = _missing(root, required)
     manifest_valid = False
     manifest_error = None
+
+    agents_path = root / "AGENTS.md"
+    agents_issues = []
+    if agents_path.exists():
+        text = agents_path.read_text(encoding="utf-8")
+        if ".harness/README.md" not in text:
+            agents_issues.append("AGENTS.md must reference .harness/README.md")
+        if ".harness/manifest.json" not in text and ".harness/manifest.yaml" not in text:
+            agents_issues.append("AGENTS.md must reference a manifest file")
+        if ".harness/vault/_index.md" not in text:
+            agents_issues.append("AGENTS.md must reference .harness/vault/_index.md")
 
     manifest_path = root / ".harness/manifest.json"
     if manifest_path.exists():
@@ -114,14 +126,16 @@ def validate_dedicated(root: Path) -> dict:
         except json.JSONDecodeError as exc:
             manifest_error = f"invalid JSON manifest: {exc}"
 
-    valid = not missing and manifest_valid
+    valid = not missing and manifest_valid and not agents_issues
     return {
         "valid": valid,
         "kind": "dedicated",
         "missing": missing,
+        "agents_issues": agents_issues,
         "checks": {
             "required_files": not missing,
             "manifest_valid": manifest_valid,
+            "agents_valid": not agents_issues,
         },
         "manifest_error": manifest_error,
     }
