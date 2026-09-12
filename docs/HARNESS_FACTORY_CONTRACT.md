@@ -9,7 +9,8 @@ The Factory must:
 - deliberate on naming
 - select architecture
 - select relevant capabilities
-- generate the Dedicated Harness
+- discover Squads from the selected capabilities
+- generate the Dedicated Harness with Squad structure
 - validate the generated harness
 - report unresolved decisions
 
@@ -28,7 +29,8 @@ Generation is successful only when:
 
 - required files exist
 - configuration is internally consistent
-- selected agents have needed skills
+- Squads are coherent (each represents a real specialization)
+- selected agents have needed skills for their assigned Squads
 - selected tools satisfy permissions
 - workflow references valid states
 - project-specific policies do not conflict with Base Constitution

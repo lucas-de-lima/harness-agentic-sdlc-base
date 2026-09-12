@@ -10,17 +10,27 @@ Generate the smallest Dedicated Harness that can safely and effectively develop 
 2. Naming
 3. Architecture Decision
 4. Skill selection
-5. Agent selection
-6. Tool selection
-7. Workflow selection
-8. Quality-gate selection
-9. Harness validation
+5. Squad discovery and creation
+6. Agent selection
+7. Tool selection
+8. Workflow selection
+9. Quality-gate selection
+10. Harness validation
 
 ## Selection rules
 
 ### Skills
 
 Select the minimum useful skill set.
+
+### Squads
+
+Discover Squads through semantic analysis of the selected skill set:
+
+1. Analyze skills for natural specialization clusters.
+2. Define Squads around real specialization boundaries, not by name prefix, directory structure, or coincidental word overlap.
+3. Each Squad must represent a coherent specialization, not merely an aggregation of skills.
+4. Document each Squad with: identifier, name, mission, scope, capabilities, constraints, tags.
 
 ### Agents
 

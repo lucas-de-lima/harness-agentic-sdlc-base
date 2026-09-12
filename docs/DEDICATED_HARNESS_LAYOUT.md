@@ -13,6 +13,9 @@ Define the first concrete `.harness` layout for product repositories.
 ├── context/
 │   ├── domain.md
 │   └── vocabulary.md
+├── squads/
+│   ├── catalog.yaml
+│   └── contexts/
 ├── agents/
 ├── skills/
 ├── policies/
@@ -29,6 +32,7 @@ The manifest identifies:
 - project identifier
 - architecture profile
 - selected skills
+- selected Squads
 - selected agents
 - selected tools
 - enabled workflows
@@ -38,6 +42,10 @@ The manifest is metadata, not executable agent logic.
 ## Agents
 
 Only project-specific configuration belongs here.
+
+## Squads
+
+Project-specific Squad definitions live here. Each Squad entry in the catalog references the skills relevant to its specialization. The Squad contexts directory holds the operational information agents load when adopting a Squad.
 
 ## Skills
 

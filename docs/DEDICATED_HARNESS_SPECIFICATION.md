@@ -11,6 +11,9 @@ Define the structure and responsibilities of a project-specific harness.
 ├── README.md
 ├── project-profile.md
 ├── architecture.md
+├── squads/
+│   ├── catalog.yaml
+│   └── contexts/
 ├── agents/
 ├── skills/
 ├── policies/
@@ -39,9 +42,24 @@ The selected architecture and rationale.
 
 Only project-relevant agent configuration.
 
+Each agent should specify which Squads it can adopt to narrow context and specialization.
+
 ### Skills
 
 Project-specific skills and specialization overlays.
+
+### Squads
+
+Project-specific Squads discovered from the skill set. Each Squad defines:
+
+- identifier
+- name
+- mission
+- scope
+- capabilities
+- constraints
+- tags
+- registry of relevant skills
 
 ### Policies
 

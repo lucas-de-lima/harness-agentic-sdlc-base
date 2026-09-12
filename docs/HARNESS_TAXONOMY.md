@@ -16,6 +16,8 @@ Pattern
     ↓
 Skill
     ↓
+Squad
+    ↓
 Agent
     ↓
 Tool / MCP
@@ -106,7 +108,34 @@ Examples:
 
 A skill is not an autonomous agent.
 
-## 6. Agent
+## 6. Squad
+
+An operational context/specialization that an LLM agent can adopt to perform a specific role.
+
+A Squad is not exclusively an agent. The same Squad context can be adopted by main agents, parallel agents, background agents, and subagents.
+
+A Squad should contain:
+
+- identifier
+- name
+- mission
+- scope
+- capabilities
+- constraints
+- tags
+
+A Squad adopts from the Skill Registry to discover relevant skills for its specialization.
+
+A single agent can change Squads during a task.
+
+Mental model:
+```
+LLM   = actor
+Squad = role/operational garment
+Skills = capabilities available for that role
+```
+
+## 7. Agent
 
 A role with responsibility for making decisions or performing work.
 
@@ -123,7 +152,9 @@ Examples:
 
 An agent uses skills and tools to accomplish its responsibility.
 
-## 7. Tool / MCP
+An agent adopts a Squad to obtain the operational context needed for its current task.
+
+## 8. Tool / MCP
 
 An external capability available to an agent.
 
@@ -139,7 +170,7 @@ Examples:
 
 A tool provides capability. It does not define the engineering decision to use that capability.
 
-## 8. Workflow
+## 9. Workflow
 
 An orchestrated sequence of activities, decisions, and handoffs that moves work from one state to another.
 
@@ -161,7 +192,7 @@ A workflow should define:
 - exit conditions;
 - failure/retry behavior.
 
-## 9. Quality Gate
+## 10. Quality Gate
 
 A condition that must be satisfied before work may advance.
 
@@ -176,7 +207,7 @@ Examples:
 
 A quality gate is evidence-based, not an agent's opinion alone.
 
-## 10. Artifact
+## 11. Artifact
 
 A durable output of a workflow.
 
@@ -192,7 +223,7 @@ Examples:
 
 Artifacts are different from GitHub work items.
 
-## 11. Work Item
+## 12. Work Item
 
 An operational unit of planned work tracked in GitHub.
 
@@ -208,7 +239,7 @@ Recommended initial types:
 
 Work items are the operational state of the project.
 
-## 12. Project Context
+## 13. Project Context
 
 The durable body of information that defines the specific system.
 
@@ -224,7 +255,7 @@ A Dedicated Harness may contain:
 - project-specific skills;
 - agent policies.
 
-## 13. Base Capability vs Project Capability
+## 14. Base Capability vs Project Capability
 
 Every reusable capability should be classified as either:
 
@@ -238,23 +269,25 @@ Useful only for one specific project or domain.
 
 Do not promote a project capability to the base without evidence that it generalizes.
 
-## 14. Composition Model
+## 15. Composition Model
 
 The Dedicated Harness is composed from the base plus project-specific information:
 
 ```text
 Base Skills
 + Base Agents
++ Base Squads
 + Base Policies
 + Base Tool Contracts
 + Project Context
 + Project Skills
++ Project Squads
 + Project Policies
 + Project Architecture
 = Dedicated Harness
 ```
 
-## 15. Decision Ownership
+## 16. Decision Ownership
 
 | Unit | Primary question |
 |---|---|
@@ -262,6 +295,7 @@ Base Skills
 | Architecture | How are major responsibilities organized? |
 | Pattern | How do we solve a recurring structural problem? |
 | Skill | How should an agent perform a type of work? |
+| Squad | What specialization does the agent adopt? |
 | Agent | Who is responsible for the work/decision? |
 | Tool/MCP | What capability can the agent invoke? |
 | Workflow | In what sequence does work move? |
@@ -269,7 +303,7 @@ Base Skills
 | Artifact | What durable knowledge/result was produced? |
 | Work Item | What piece of work is currently tracked? |
 
-## 16. Taxonomy Rules
+## 17. Taxonomy Rules
 
 1. Do not create a new category when an existing one is sufficient.
 2. Do not turn every instruction into a skill.
@@ -279,7 +313,7 @@ Base Skills
 6. Keep project-specific knowledge out of the base unless it demonstrably generalizes.
 7. Favor a small number of well-defined primitives over a large number of overlapping abstractions.
 
-## 17. Definition of Done for the Taxonomy
+## 18. Definition of Done for the Taxonomy
 
 This taxonomy is complete for v1 when:
 
